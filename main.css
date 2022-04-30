@@ -1,0 +1,13 @@
+body {
+  background-color: antiquewhite;
+}
+.intro-card {
+  width: 100%;
+}
+.houses-fltr-div {
+  display: flex;
+}
+.house-btn {
+  width: 200px;
+  align-items: space-between;
+}
