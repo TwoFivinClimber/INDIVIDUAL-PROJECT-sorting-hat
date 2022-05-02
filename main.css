@@ -9,5 +9,5 @@ body {
 }
 .house-btn {
   width: 200px;
-  align-items: space-between;
+  margin: 20px;
 }
