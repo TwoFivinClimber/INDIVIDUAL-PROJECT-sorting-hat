@@ -27,27 +27,27 @@ const students = [
   {
     id: 6,
     name: "Draco Malfoy",
-    house: "Syltherin",
+    house: "Slytherin",
   },
   {
     id: 7,
     name: "Bellatrix Lestrange",
-    house: "Syltherin",
+    house: "Slytherin",
   },
   {
     id: 8,
     name: "Pansy Parkinson",
-    house: "Syltherin",
+    house: "Slytherin",
   },
   {
     id: 9,
     name: "Severus Snape",
-    house: "Syltherin",
+    house: "Slytherin",
   },
   {
     id: 10,
     name: "Lucius Malfoy",
-    house: "Syltherin",
+    house: "Slytherin",
   },
   {
     id: 11,
