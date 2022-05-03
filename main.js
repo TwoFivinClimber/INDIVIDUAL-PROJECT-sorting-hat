@@ -2,7 +2,6 @@ import { students } from "./data.js";
 import { newStudents } from "./data.js";
 import { voldArmy } from "./data.js";
 
-const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
 const photos = [];
 
 const renderToDom = (divId, textToRender) => {
@@ -40,9 +39,9 @@ const nameForm = () => {
   renderToDom("#name-form", domstring);
 };
 
-const houseBtns = (arr) => {
+const houseBtns = () => {
   let domString = "";
-  domString += `
+  domString = `
   <div class="dropdown">
    <a class="btn btn-secondary dropdown-toggle house-btn" href="#" role="button" id="allBtn" data-bs-toggle="dropdown" aria-expanded="false">
      ALL
@@ -52,43 +51,38 @@ const houseBtns = (arr) => {
  </div>
  <div class="dropdown">
   <a class="btn btn-secondary dropdown-toggle house-btn" href="#" role="button" id="gryBtn" data-bs-toggle="dropdown" aria-expanded="false">
-    Gryffindoor
+    Gryffindoor 🦁
   </a>
   <ul id="gryList" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
   </ul>
 </div>
 <div class="dropdown">
   <a class="btn btn-secondary dropdown-toggle house-btn" href="#" role="button" id="slyBtn" data-bs-toggle="dropdown" aria-expanded="false">
-    Slytherin
+    Slytherin 🐍
   </a>
   <ul id="slyList" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
   </ul>
 </div>
 <div class="dropdown">
   <a class="btn btn-secondary dropdown-toggle house-btn" href="#" role="button" id="hufBtn" data-bs-toggle="dropdown" aria-expanded="false">
-    Hufflepuff
+    Hufflepuff 🦡
   </a>
   <ul id="hufList" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
   </ul>
 </div>
 <div class="dropdown">
   <a class="btn btn-secondary dropdown-toggle house-btn" href="#" role="button" id="ravBtn" data-bs-toggle="dropdown" aria-expanded="false">
-    Ravenclaw
+    Ravenclaw 🦅
   </a>
 
   <ul id="ravList" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
   </ul>
 </div>`;
 
-  //`<button type="button" class="btn btn-primary house-btn">All</button>
-  // <button type="button" class="btn btn-secondary house-btn">Gryffindor 🦁</button>
-  // <button type="button" class="btn btn-success house-btn">Ravenclaw 🦅</button>
-  // <button type="button" class="btn btn-danger house-btn">Hufflepuff 🦡</button>
-  // <button type="button" class="btn btn-warning house-btn">Slytherin 🐍</button>`;
   renderToDom("#houses-fltr", domString);
 };
 
-const houseRslt = (arr) => {
+const cardRender = (arr, divId) => {
   let domString = "";
   for (let i of arr)
     domString += `<div id="student-card" class="card mb-3" style="max-width: 540px;">
@@ -106,7 +100,7 @@ const houseRslt = (arr) => {
     </div>
   </div>
 </div>`;
-  renderToDom("#house-rslt", domString);
+  renderToDom(divId, domString);
 };
 
 const voldemort = (arr) => {
@@ -130,22 +124,50 @@ const voldemort = (arr) => {
   }
 };
 
-const filterFunction = () => {
+const dropFilter = () => {
   document.querySelector("#houses-fltr").addEventListener("click", (e) => {
     if (e.target.id === "allBtn") {
-      console.log();
+      let domString = "";
+      for (const i of students) {
+        domString += `<li>${i.name}</li>`;
+      }
+      renderToDom("#allList", domString);
     }
     if (e.target.id === "gryBtn") {
-      console.log("Gry drop pressed");
+      let domString = "";
+      const gryStudents = students.filter(
+        (find) => find.house === "Gryffindor"
+      );
+      for (const i of gryStudents) {
+        domString += `<li>${i.name}</li>`;
+      }
+      renderToDom("#gryList", domString);
     }
     if (e.target.id === "slyBtn") {
-      console.log("Sly drop pressed");
+      let domString = "";
+      const slyStudents = students.filter((find) => find.house === "Slytherin");
+      for (const i of slyStudents) {
+        domString += `<li>${i.name}</li>`;
+      }
+      renderToDom("#slyList", domString);
     }
     if (e.target.id === "hufBtn") {
-      console.log("huf drop pressed");
+      let domString = "";
+      const hufStudents = students.filter(
+        (find) => find.house === "Hufflepuff"
+      );
+      for (const i of hufStudents) {
+        domString += `<li>${i.name}</li>`;
+      }
+      renderToDom("#hufList", domString);
     }
     if (e.target.id === "ravBtn") {
-      console.log("Rav drop pressed");
+      let domString = "";
+      const ravStudents = students.filter((find) => find.house === "Ravenclaw");
+      for (const i of ravStudents) {
+        domString += `<li>${i.name}</li>`;
+      }
+      renderToDom("#ravList", domString);
     }
   });
 };
@@ -157,12 +179,13 @@ const letsGo = () => {
       document.querySelector("#dumb-img").style.display = "none";
       nameForm();
       houseBtns();
-      filterFunction();
+      dropFilter();
     }
   });
 };
 
 const findHouse = () => {
+  const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
   document.querySelector("#name-form").addEventListener("click", (e) => {
     if (e.target.id === "findHouse-btn") {
       const newStudent = {
@@ -174,7 +197,7 @@ const findHouse = () => {
       students.push(newStudent);
       document.querySelector("#student-form").reset();
     }
-    houseRslt(newStudents);
+    cardRender(newStudents, "#house-rslt");
   });
 };
 
@@ -190,14 +213,18 @@ const expelStudent = () => {
         voldArmy.push(newStudents[newIndex]);
         newStudents.splice(newIndex, 1);
       }
-      houseRslt(newStudents);
+      cardRender(newStudents, "#house-rslt");
       voldemort(voldArmy);
     }
   });
 };
 
-introCard();
-introImg();
-letsGo();
-findHouse();
-expelStudent();
+function startApp() {
+  introCard();
+  introImg();
+  letsGo();
+  findHouse();
+  expelStudent();
+}
+
+startApp();
