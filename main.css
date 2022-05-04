@@ -8,10 +8,21 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
-.houses-fltr-div {
+.expelled {
   display: flex;
-  flex: 1;
+  flex-wrap: wrap;
 }
-h1 {
-  max-height: 60px;
+
+h2 {
+  font-size: x-large;
+}
+.student-card {
+  max-height: 150px;
+  max-width: 320px;
+  font-size: smaller;
+  margin: 4px;
+}
+
+.card-text {
+  margin: 4px, 0px;
 }

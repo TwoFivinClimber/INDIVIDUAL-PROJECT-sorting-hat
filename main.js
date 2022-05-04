@@ -47,19 +47,15 @@ const houseBtns = () => {
   <button id="ravBtn" type="button" class="btn btn-primary">Ravenclaw</button>`;
   renderToDom("#houses-fltr", domString);
 };
-const renderHeader = () => {
-  let domString = "";
-  domString = "<h2>Header Here</h2>";
-  renderToDom("#house-div", domString);
-};
+
 const cardRender = (arr, divId) => {
-  let domString = "";
+  let domString = "<h2>Houses</h2>";
   for (let i of arr) {
     const gryHouse = i.house === "Gryffindor";
     const slyHouse = i.house === "Slytherin";
     const hufHouse = i.house === "Hufflepuff";
     const ravHouse = i.house === "Ravenclaw";
-    domString += `<div id="house-rslt" class="house-rslt-div"><div id="student-card" class="card mb-3, student-card" style="max-width: 540px;">
+    domString += `<div id="student-card" class="card mb-3 student-card">
   <div class="row g-0">
     <div class="col-md-4">
       <img src=${gryHouse ? "images/gryffindor.jpg" : ""} ${
@@ -75,21 +71,19 @@ const cardRender = (arr, divId) => {
         <p class="card-text"><small class="text-muted"></small></p>
         <button type="button" id="expel--${
           i.id
-        }" class="btn btn-dark">Expel</button>
+        }" class="btn btn-dark expelBtn">Expel</button>
       </div>
     </div>
   </div>
-</div>
 </div>`;
   }
   renderToDom(divId, domString);
-  renderHeader();
 };
 
 const voldemort = (arr) => {
-  let domString = "";
+  let domString = "<h2>Expelled</h2>";
   for (let i of voldArmy) {
-    domString += `<div id="voldemort" class="voldemort-div"><div class="card mb-3" style="max-width: 540px;">
+    domString += `<div class="card mb-3 student-card">
     <div class="row g-0">
       <div class="col-md-4">
         <img src="images/voldemort.jpg" class="img-fluid rounded-start" alt="voldemorts face">
@@ -102,9 +96,8 @@ const voldemort = (arr) => {
         </div>
       </div>
     </div>
-  </div>
   </div>`;
-    renderToDom("#house-div", domString);
+    renderToDom("#expelled", domString);
   }
 };
 
