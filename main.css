@@ -4,10 +4,14 @@ body {
 .intro-card {
   width: 100%;
 }
+.house-div {
+  display: flex;
+  flex-wrap: wrap;
+}
 .houses-fltr-div {
   display: flex;
+  flex: 1;
 }
-.house-btn {
-  width: 200px;
-  margin: 20px;
+h1 {
+  max-height: 60px;
 }

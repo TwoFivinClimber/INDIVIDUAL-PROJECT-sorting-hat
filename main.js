@@ -17,14 +17,13 @@ const introCard = () => {
     <p class="card-text">"You were put here on this earth to achieve your greatese self, to live out your purpouse, and to do it courageously."</p>
     <a href="#" id="lets-go" class="btn btn-primary">Lets Go!</a>
   </div>
-</div>`;
+  </div>`;
   renderToDom("#intro", domstring);
 };
 
 const introImg = () => {
   let domString = "";
-  domString = `<img
-      src="images/dumbledore.jpg" id="dumb-img" 
+  domString = `<img src="images/dumbledore.jpg" id="dumb-img" 
       alt="dumbledore gazing upon students in hall"
     ></img>`;
   renderToDom("#intro-img", domString);
@@ -33,7 +32,7 @@ const introImg = () => {
 const nameForm = () => {
   let domstring = "";
   domstring = `<form class="input-group mb-3" id="student-form" >
-<input type="text" id="student-name" class="form-control" placeholder="Enter Your Name" aria-label="First Year Name" aria-describedby="button-addon2">
+<input required type="text" id="student-name" class="form-control" placeholder="Enter Your Name" aria-label="First Year Name" aria-describedby="button-addon2">
 <button class="btn btn-outline-secondary" type="submit" value="submit" id="findHouse-btn">Find Your House</button>
 </form>`;
   renderToDom("#name-form", domstring);
@@ -41,75 +40,59 @@ const nameForm = () => {
 
 const houseBtns = () => {
   let domString = "";
-  domString = `
-  <div class="dropdown">
-   <a class="btn btn-secondary dropdown-toggle house-btn" href="#" role="button" id="allBtn" data-bs-toggle="dropdown" aria-expanded="false">
-     ALL
-   </a>
-   <ul id="allList" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-   </ul>
- </div>
- <div class="dropdown">
-  <a class="btn btn-secondary dropdown-toggle house-btn" href="#" role="button" id="gryBtn" data-bs-toggle="dropdown" aria-expanded="false">
-    Gryffindoor 🦁
-  </a>
-  <ul id="gryList" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-  </ul>
-</div>
-<div class="dropdown">
-  <a class="btn btn-secondary dropdown-toggle house-btn" href="#" role="button" id="slyBtn" data-bs-toggle="dropdown" aria-expanded="false">
-    Slytherin 🐍
-  </a>
-  <ul id="slyList" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-  </ul>
-</div>
-<div class="dropdown">
-  <a class="btn btn-secondary dropdown-toggle house-btn" href="#" role="button" id="hufBtn" data-bs-toggle="dropdown" aria-expanded="false">
-    Hufflepuff 🦡
-  </a>
-  <ul id="hufList" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-  </ul>
-</div>
-<div class="dropdown">
-  <a class="btn btn-secondary dropdown-toggle house-btn" href="#" role="button" id="ravBtn" data-bs-toggle="dropdown" aria-expanded="false">
-    Ravenclaw 🦅
-  </a>
-
-  <ul id="ravList" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-  </ul>
-</div>`;
-
+  domString = `<button id="allBtn" type="button" class="btn btn-dark">All Students</button>
+  <button id="gryBtn" type="button" class="btn btn-danger">Gryffindoor</button>
+  <button id="slyBtn" type="button" class="btn btn-success">Slytherin</button>
+  <button id="hufBtn" type="button" class="btn btn-warning">Hufflepuff</button>
+  <button id="ravBtn" type="button" class="btn btn-primary">Ravenclaw</button>`;
   renderToDom("#houses-fltr", domString);
 };
-
+const renderHeader = () => {
+  let domString = "";
+  domString = "<h2>Header Here</h2>";
+  renderToDom("#house-div", domString);
+};
 const cardRender = (arr, divId) => {
   let domString = "";
-  for (let i of arr)
-    domString += `<div id="student-card" class="card mb-3" style="max-width: 540px;">
+  for (let i of arr) {
+    const gryHouse = i.house === "Gryffindor";
+    const slyHouse = i.house === "Slytherin";
+    const hufHouse = i.house === "Hufflepuff";
+    const ravHouse = i.house === "Ravenclaw";
+    domString += `<div id="house-rslt" class="house-rslt-div"><div id="student-card" class="card mb-3, student-card" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="...">
+      <img src=${gryHouse ? "images/gryffindor.jpg" : ""} ${
+      slyHouse ? "images/slytherin.jpg" : ""
+    } ${hufHouse ? "images/hufflepuff.jpg" : ""} ${
+      ravHouse ? "images/ravenclaw.jpg" : ""
+    } class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">${i.name}</h5>
         <p class="card-text">Was placed into ${i.house}</p>
-        <p class="card-text"><small class="text-muted">Blurb about the house</small></p>
-        <button type="button" id="expel--${i.id}" class="btn btn-dark">Expel</button>
+        <p class="card-text"><small class="text-muted"></small></p>
+        <button type="button" id="expel--${
+          i.id
+        }" class="btn btn-dark">Expel</button>
       </div>
     </div>
   </div>
+</div>
 </div>`;
+  }
   renderToDom(divId, domString);
+  renderHeader();
 };
 
 const voldemort = (arr) => {
   let domString = "";
   for (let i of voldArmy) {
-    domString += `<div class="card mb-3" style="max-width: 540px;">
+    domString += `<div id="voldemort" class="voldemort-div"><div class="card mb-3" style="max-width: 540px;">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="..." class="img-fluid rounded-start" alt="...">
+        <img src="images/voldemort.jpg" class="img-fluid rounded-start" alt="voldemorts face">
       </div>
       <div class="col-md-8">
         <div class="card-body">
@@ -119,55 +102,36 @@ const voldemort = (arr) => {
         </div>
       </div>
     </div>
+  </div>
   </div>`;
-    renderToDom("#voldemort", domString);
+    renderToDom("#house-div", domString);
   }
 };
 
-const dropFilter = () => {
+const houseFilter = () => {
   document.querySelector("#houses-fltr").addEventListener("click", (e) => {
     if (e.target.id === "allBtn") {
-      let domString = "";
-      for (const i of students) {
-        domString += `<li>${i.name}</li>`;
-      }
-      renderToDom("#allList", domString);
+      cardRender(students, "#house-div");
     }
     if (e.target.id === "gryBtn") {
-      let domString = "";
       const gryStudents = students.filter(
         (find) => find.house === "Gryffindor"
       );
-      for (const i of gryStudents) {
-        domString += `<li>${i.name}</li>`;
-      }
-      renderToDom("#gryList", domString);
+      cardRender(gryStudents, "#house-div");
     }
     if (e.target.id === "slyBtn") {
-      let domString = "";
       const slyStudents = students.filter((find) => find.house === "Slytherin");
-      for (const i of slyStudents) {
-        domString += `<li>${i.name}</li>`;
-      }
-      renderToDom("#slyList", domString);
+      cardRender(slyStudents, "#house-div");
     }
     if (e.target.id === "hufBtn") {
-      let domString = "";
       const hufStudents = students.filter(
         (find) => find.house === "Hufflepuff"
       );
-      for (const i of hufStudents) {
-        domString += `<li>${i.name}</li>`;
-      }
-      renderToDom("#hufList", domString);
+      cardRender(hufStudents, "#house-div");
     }
     if (e.target.id === "ravBtn") {
-      let domString = "";
       const ravStudents = students.filter((find) => find.house === "Ravenclaw");
-      for (const i of ravStudents) {
-        domString += `<li>${i.name}</li>`;
-      }
-      renderToDom("#ravList", domString);
+      cardRender(ravStudents, "#house-div");
     }
   });
 };
@@ -179,7 +143,7 @@ const letsGo = () => {
       document.querySelector("#dumb-img").style.display = "none";
       nameForm();
       houseBtns();
-      dropFilter();
+      houseFilter();
     }
   });
 };
@@ -188,6 +152,7 @@ const findHouse = () => {
   const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
   document.querySelector("#name-form").addEventListener("click", (e) => {
     if (e.target.id === "findHouse-btn") {
+      e.preventDefault();
       const newStudent = {
         id: students[students.length - 1].id + 1,
         name: document.querySelector("#student-name").value,
@@ -197,24 +162,34 @@ const findHouse = () => {
       students.push(newStudent);
       document.querySelector("#student-form").reset();
     }
-    cardRender(newStudents, "#house-rslt");
+    cardRender(newStudents, "#house-div");
   });
 };
 
 const expelStudent = () => {
-  document.querySelector("#house-rslt").addEventListener("click", (e) => {
+  document.querySelector("#house-div").addEventListener("click", (e) => {
     if (e.target.id) {
       const [method, id] = e.target.id.split("--");
       const newIndex = newStudents.findIndex((find) => find.id === Number(id));
       const studentIndex = students.findIndex((find) => find.id === Number(id));
-      if (e.target.id.includes("expel")) {
-        newStudents[newIndex].house = "Voldemorts Army";
+      if (
+        e.target.id.includes("expel") &&
+        studentIndex >= students.length - 1
+      ) {
         students[studentIndex].house = "Voldemorts Army";
-        voldArmy.push(newStudents[newIndex]);
+        voldArmy.push(students[studentIndex]);
+        students.splice(studentIndex, 1);
         newStudents.splice(newIndex, 1);
+        cardRender(students, "#house-div");
+        voldemort(voldArmy, "#voldemort");
+      } else if (e.target.id.includes("expel")) {
+        students[studentIndex].house = "Voldemorts Army";
+        voldArmy.push(students[studentIndex]);
+        students.splice(studentIndex, 1);
+        cardRender(students, "#house-div");
+        voldemort(voldArmy, "#voldemort");
+      } else {
       }
-      cardRender(newStudents, "#house-rslt");
-      voldemort(voldArmy);
     }
   });
 };
