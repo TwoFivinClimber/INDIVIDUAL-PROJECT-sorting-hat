@@ -32,7 +32,7 @@ const introImg = () => {
 const nameForm = () => {
   let domstring = "";
   domstring = `<form class="input-group mb-3" id="student-form" >
-<input required type="text" id="student-name" class="form-control" placeholder="Enter Your Name" aria-label="First Year Name" aria-describedby="button-addon2">
+<input type="text" required="required" id="student-name" class="form-control" placeholder="Enter Your Name" aria-label="First Year Name" aria-describedby="button-addon2" >
 <button class="btn btn-outline-secondary" type="submit" value="submit" id="findHouse-btn">Find Your House</button>
 </form>`;
   renderToDom("#name-form", domstring);
