@@ -31,10 +31,10 @@ const introImg = () => {
 
 const nameForm = () => {
   let domstring = "";
-  domstring = `<form class="input-group mb-3" id="student-form" >
-<input required type="text" id="student-name" class="form-control" placeholder="Enter Your Name" aria-label="First Year Name" aria-describedby="button-addon2">
-<button class="btn btn-outline-secondary" type="submit" value="submit" id="findHouse-btn">Find Your House</button>
-</form>`;
+  domstring = `<form class="input-group mb-3" id="student-form" action="/newstudent" method=submit >
+   <input type="text" id="student-name" class="form-control" placeholder="Enter Your Name" required />
+   <button class="btn btn-outline-secondary" type="submit" value="submit" id="findHouse-btn">Find Your House</button>
+   </form>`;
   renderToDom("#name-form", domstring);
 };
 
@@ -143,6 +143,7 @@ const letsGo = () => {
 
 const findHouse = () => {
   const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
+
   document.querySelector("#name-form").addEventListener("click", (e) => {
     if (e.target.id === "findHouse-btn") {
       e.preventDefault();
