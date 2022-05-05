@@ -83,7 +83,7 @@ const cardRender = (arr, divId) => {
 const voldemort = (arr) => {
   let domString = "<h2>Expelled</h2>";
   for (let i of voldArmy) {
-    domString += `<div class="card mb-3 student-card">
+    domString += `<div id="student-card" class="card mb-3 student-card">
     <div class="row g-0">
       <div class="col-md-4">
         <img src="images/voldemort.jpg" class="img-fluid rounded-start" alt="voldemorts face">

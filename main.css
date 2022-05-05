@@ -7,14 +7,22 @@ body {
 .house-div {
   display: flex;
   flex-wrap: wrap;
+  max-width: 50%;
+  align-self: center;
+  border: solid 2px black;
 }
+
 .expelled {
   display: flex;
   flex-wrap: wrap;
+  max-width: 50%;
+  border: solid 2px black;
 }
 
 h2 {
   font-size: x-large;
+  display: inline-block;
+  width: 100%;
 }
 .student-card {
   max-height: 150px;
