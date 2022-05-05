@@ -31,7 +31,7 @@ const introImg = () => {
 
 const nameForm = () => {
   let domstring = "";
-  domstring = `<form class="input-group mb-3" id="student-form" action="/newstudent" method=submit >
+  domstring = `<form class="input-group mb-3" id="student-form">
    <input type="text" id="student-name" class="form-control" placeholder="Enter Your Name" required />
    <button class="btn btn-outline-secondary" type="submit" value="submit" id="findHouse-btn">Find Your House</button>
    </form>`;
@@ -144,18 +144,18 @@ const letsGo = () => {
 const findHouse = () => {
   const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
 
-  document.querySelector("#name-form").addEventListener("click", (e) => {
-    if (e.target.id === "findHouse-btn") {
-      e.preventDefault();
-      const newStudent = {
-        id: students[students.length - 1].id + 1,
-        name: document.querySelector("#student-name").value,
-        house: houses[Math.floor(Math.random() * 4)],
-      };
-      newStudents.push(newStudent);
-      students.push(newStudent);
-      document.querySelector("#student-form").reset();
-    }
+  document.querySelector("#name-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log(e);
+    const newStudent = {
+      id: students[students.length - 1].id + 1,
+      name: document.querySelector("#student-name").value,
+      house: houses[Math.floor(Math.random() * 4)],
+    };
+
+    newStudents.push(newStudent);
+    students.push(newStudent);
+    document.querySelector("#student-form").reset();
     cardRender(newStudents, "#house-div");
   });
 };
