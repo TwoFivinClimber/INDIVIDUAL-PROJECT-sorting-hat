@@ -1,28 +1,65 @@
 body {
-  background-color: antiquewhite;
+  background-color: #f2cc8f;
 }
 .intro-card {
-  width: 100%;
+  width: 80%;
+  text-align: center;
+  margin: auto;
+  background-color: #81b29a;
+  border: none;
+}
+
+.dumb-img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 80%;
+}
+
+#student-form {
+  width: 50%;
+  margin: auto;
+  margin-top: 15px;
+}
+.btn-outline-secondary {
+  background-color: #d62828;
+  color: black;
+}
+.houses-fltr-div {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+.house-container {
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 .house-div {
   display: flex;
   flex-wrap: wrap;
-  max-width: 50%;
-  align-self: center;
-  border: solid 2px black;
+  justify-content: space-evenly;
+  border: solid 1px black;
+  margin: 10px;
+  min-width: 50%;
 }
 
 .expelled {
   display: flex;
   flex-wrap: wrap;
-  max-width: 50%;
-  border: solid 2px black;
+  justify-content: space-evenly;
+  border: solid 1px black;
+  margin: 10px;
+  min-width: 50%;
+  /* display: none; */
 }
 
 h2 {
   font-size: x-large;
   display: inline-block;
   width: 100%;
+  text-align: center;
 }
 .student-card {
   max-height: 150px;

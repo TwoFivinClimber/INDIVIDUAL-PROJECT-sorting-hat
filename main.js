@@ -13,7 +13,7 @@ const introCard = () => {
   let domstring = "";
   domstring = `<div class="card intro-card" id="intro-card">
   <div class="card-body">
-    <h5 class="card-title">Welcome to Hogwarts</h5>
+    <h1 class="card-title">Welcome to Hogwarts</h1>
     <p class="card-text">"You were put here on this earth to achieve your greatese self, to live out your purpouse, and to do it courageously."</p>
     <a href="#" id="lets-go" class="btn btn-primary">Lets Go!</a>
   </div>
@@ -23,7 +23,7 @@ const introCard = () => {
 
 const introImg = () => {
   let domString = "";
-  domString = `<img src="images/dumbledore.jpg" id="dumb-img" 
+  domString = `<img src="images/dumbledore.jpg" class="dumb-img" id="dumb-img" 
       alt="dumbledore gazing upon students in hall"
     ></img>`;
   renderToDom("#intro-img", domString);
@@ -49,7 +49,7 @@ const houseBtns = () => {
 };
 
 const cardRender = (arr, divId) => {
-  let domString = "<h2>Houses</h2>";
+  let domString = "<h2>Students</h2>";
   for (let i of arr) {
     const gryHouse = i.house === "Gryffindor";
     const slyHouse = i.house === "Slytherin";
@@ -174,13 +174,13 @@ const expelStudent = () => {
         voldArmy.push(students[studentIndex]);
         students.splice(studentIndex, 1);
         newStudents.splice(newIndex, 1);
-        cardRender(students, "#house-div");
+        cardRender(newStudents, "#house-div");
         voldemort(voldArmy, "#voldemort");
       } else if (e.target.id.includes("expel")) {
         students[studentIndex].house = "Voldemorts Army";
         voldArmy.push(students[studentIndex]);
         students.splice(studentIndex, 1);
-        cardRender(students, "#house-div");
+        cardRender(newStudents, "#house-div");
         voldemort(voldArmy, "#voldemort");
       } else {
       }
