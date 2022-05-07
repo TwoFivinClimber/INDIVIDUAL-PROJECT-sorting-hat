@@ -187,7 +187,6 @@ const expelStudent = () => {
         changeText("New Students", "header");
       } else {
       }
-      console.log(newIndex);
       console.log(students);
       console.log(newStudents);
       console.log(voldArmy);
