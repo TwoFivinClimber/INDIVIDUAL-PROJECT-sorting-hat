@@ -143,10 +143,8 @@ const letsGo = () => {
 
 const findHouse = () => {
   const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
-
   document.querySelector("#name-form").addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log(e);
     const newStudent = {
       id: students[students.length - 1].id + 1,
       name: document.querySelector("#student-name").value,
@@ -172,10 +170,7 @@ const expelStudent = () => {
       const [method, id] = e.target.id.split("--");
       const newIndex = newStudents.findIndex((find) => find.id === Number(id));
       const studentIndex = students.findIndex((find) => find.id === Number(id));
-      if (
-        e.target.id.includes("expel") &&
-        studentIndex >= students.length - 1
-      ) {
+      if (e.target.id.includes("expel") && studentIndex >= !students.student) {
         students[studentIndex].house = "Voldemorts Army";
         voldArmy.push(students[studentIndex]);
         students.splice(studentIndex, 1);
@@ -192,6 +187,10 @@ const expelStudent = () => {
         changeText("New Students", "header");
       } else {
       }
+      console.log(newIndex);
+      console.log(students);
+      console.log(newStudents);
+      console.log(voldArmy);
     }
   });
 };
