@@ -7,6 +7,15 @@ body {
   margin: auto;
   background-color: #81b29a;
   border: none;
+  font-family: "Playfair Display", serif;
+}
+.intro-text {
+  font-weight: bold;
+  font-size: 20px;
+}
+h1 {
+  font-weight: bold;
+  font-size: 48px;
 }
 
 .dumb-img {
@@ -16,11 +25,15 @@ body {
   width: 80%;
 }
 
-#student-form {
+.input-group {
   width: 50%;
   margin: auto;
   margin-top: 15px;
 }
+input.form-control {
+  background-color: #f7ede2;
+}
+
 .btn-outline-secondary {
   background-color: #d62828;
   color: black;
@@ -32,7 +45,6 @@ body {
 }
 .house-container {
   display: flex;
-  /* flex-direction: column; */
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
@@ -40,7 +52,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  border: solid 1px black;
+  border: solid 1px slategray;
   margin: 10px;
   min-width: 50%;
 }
@@ -49,10 +61,9 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  border: solid 1px black;
+  border: solid 1px slategray;
   margin: 10px;
   min-width: 50%;
-  /* display: none; */
 }
 
 h2 {
@@ -66,8 +77,14 @@ h2 {
   max-width: 320px;
   font-size: smaller;
   margin: 4px;
+  background-color: #f7ede2;
 }
 
 .card-text {
   margin: 4px, 0px;
+}
+
+#voldyImg {
+  height: 148px;
+  width: 100px;
 }
