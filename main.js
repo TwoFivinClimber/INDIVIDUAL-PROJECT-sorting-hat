@@ -2,8 +2,6 @@ import { students } from "./data.js";
 import { newStudents } from "./data.js";
 import { voldArmy } from "./data.js";
 
-const photos = [];
-
 const renderToDom = (divId, textToRender) => {
   const selectedDiv = document.querySelector(divId);
   selectedDiv.innerHTML = textToRender;
@@ -15,6 +13,7 @@ const introCard = () => {
   <div class="card-body">
     <h1 class="card-title">Welcome to Hogwarts</h1>
     <p class="card-text">"You were put here on this earth to achieve your greatese self, to live out your purpouse, and to do it courageously."</p>
+    <p id="intro-text" class="intro-text"></p>
     <a href="#" id="lets-go" class="btn btn-primary">Lets Go!</a>
   </div>
   </div>`;
@@ -49,7 +48,7 @@ const houseBtns = () => {
 };
 
 const cardRender = (arr, divId) => {
-  let domString = "<h2>Students</h2>";
+  let domString = `<h2 id="header">Students</h2>`;
   for (let i of arr) {
     const gryHouse = i.house === "Gryffindor";
     const slyHouse = i.house === "Slytherin";
@@ -86,13 +85,13 @@ const voldemort = (arr) => {
     domString += `<div id="student-card" class="card mb-3 student-card">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="images/voldemort.jpg" class="img-fluid rounded-start" alt="voldemorts face">
+        <img src="images/voldemort.jpg" id ="voldyImg" class="img-fluid rounded-start" alt="voldemorts face">
       </div>
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">${i.name}</h5>
           <p class="card-text">Was expelled into ${i.house}</p>
-          <p class="card-text"><small class="text-muted">We shal never speak your name again.</small></p>
+          <p class="card-text"><small class="text-muted">We shal never speak their name again.</small></p>
         </div>
       </div>
     </div>
@@ -137,6 +136,7 @@ const letsGo = () => {
       nameForm();
       houseBtns();
       houseFilter();
+      changeText("See what the sorting hat has to say about you", "intro-text");
     }
   });
 };
@@ -156,8 +156,14 @@ const findHouse = () => {
     newStudents.push(newStudent);
     students.push(newStudent);
     document.querySelector("#student-form").reset();
+    newStudents.sort((a, b) => a.name.localeCompare(b.name));
     cardRender(newStudents, "#house-div");
+    changeText("New Students", "header");
   });
+};
+
+const changeText = (str, divId) => {
+  document.getElementById(divId).innerHTML = str;
 };
 
 const expelStudent = () => {
@@ -176,12 +182,14 @@ const expelStudent = () => {
         newStudents.splice(newIndex, 1);
         cardRender(newStudents, "#house-div");
         voldemort(voldArmy, "#voldemort");
+        changeText("New Students", "header");
       } else if (e.target.id.includes("expel")) {
         students[studentIndex].house = "Voldemorts Army";
         voldArmy.push(students[studentIndex]);
         students.splice(studentIndex, 1);
         cardRender(newStudents, "#house-div");
         voldemort(voldArmy, "#voldemort");
+        changeText("New Students", "header");
       } else {
       }
     }
